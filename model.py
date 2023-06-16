@@ -6,21 +6,7 @@ from catboost import CatBoostRegressor
 from catboost import Pool
 
 import preproc as prc
-
-
-def cat_num_split(df: pd.DataFrame) -> tuple:
-    '''Ищем категориальные и числовые признаки в датафрейме'''
-
-    cat_columns = []
-    num_columns = []
-
-    for column_name in df.columns:
-        if df[column_name].dtypes == object:
-            cat_columns += [column_name]
-        else:
-            num_columns += [column_name]
-
-    return cat_columns, num_columns
+from preproc import cat_num_split
 
 
 df = prc.load_data('./Datasets/train.csv')
