@@ -13,12 +13,6 @@ with open('model.pkl', 'rb') as file_:
     model = pickle.load(file_)
 
 
-def make_pool(df: pd.DataFrame) -> Pool:
-    '''Преобразуем данные в специальный формат Catboost'''
-
-    return pred_data
-
-
 def predict(df: pd.DataFrame) -> float:
     '''Определяем цену c помощью модели'''
 
@@ -29,7 +23,11 @@ def predict(df: pd.DataFrame) -> float:
     return model.predict(pred_data)
 
 
-if __name__ == "__main__":
+def predict_test_file() -> None:
+    '''
+    Берем файл test.csv из папки с /Datasets
+    и добавляем ему колонку с ценой кв.м. 
+    '''
 
     df = prc.load_data('./Datasets/test.csv')
 
@@ -43,4 +41,12 @@ if __name__ == "__main__":
 
     pred.insert(0, 'предполагаемая цена кв.м.', y_pred)
 
-    pred.to_csv('./Datasets/pred.csv', sep='\t', encoding='utf-16')
+    pred.to_csv('./Datasets/pred.csv', sep='\t', encoding='utf-16')    
+    
+
+if __name__ == "__main__":
+   try:
+       predict_test_file()
+
+   except:
+       print('В папке /Datasets нет файла test.csv или он косячный')
