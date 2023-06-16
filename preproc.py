@@ -1,5 +1,7 @@
 import pandas as pd
 
+from sklearn.impute import SimpleImputer
+
 
 def cat_num_split(df: pd.DataFrame) -> tuple:
     '''Ищем категориальные и числовые признаки в датафрейме'''
@@ -68,8 +70,8 @@ def fill_nans(df: pd.DataFrame) -> pd.DataFrame:
     '''Заполняем пропуски в датасете'''
     cat_col, num_col = cat_num_split(df)
     
-    imp_num = SimpleImputer(strategy='median')
-    imp_cat = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
+    imp_num = SimpleImputer(missing_values=pd.NA, strategy='median')
+    imp_cat = SimpleImputer(missing_values=pd.NA, strategy='most_frequent')
     
     df[num_col] = imp_num.fit_transform(df[num_col])
     df[cat_col] = imp_cat.fit_transform(df[cat_col])
