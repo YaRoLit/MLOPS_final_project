@@ -54,7 +54,8 @@ def test_unique_val_compare():
     соответствующих категориальных признаков.
     '''
     for col_name in cat_cols_uniq.keys():
-        assert (list(df[col_name].unique()).sort() == cat_cols_uniq[col_name][:-1].sort())
+        assert list(df[col_name].unique()).sort() ==\
+                    cat_cols_uniq[col_name][:-1].sort()
 
 
 def test_build_date():
@@ -63,19 +64,20 @@ def test_build_date():
     В принципе, не сильно умный тест, но пусть будет.
     '''
     for col in num_col_stats.columns:
-        # Проверяем, что в новой выборке минимум больше или равен, чем в старой
+        # Проверяем, что в новой выборке min больше или равен, чем в старой
         assert df[col].min() >= num_col_stats[col]['min']
-        # Проверяем, что в новой выборке максимум меньше или равен, чем в старой
+        # Проверяем, что в новой выборке max меньше или равен, чем в старой
         assert df[col].max() <= num_col_stats[col]['max']
         # Проверяем, что в новой выборке медиана попадает в IQR старой выборки
-        assert num_col_stats[col]['25%'] <= df[col].median() <= num_col_stats[col]['75%']
+        assert num_col_stats[col]['25%'] <= df[col].median()\
+                                         <= num_col_stats[col]['75%']
 
 
 def test_df_nans_percent():
     '''Проверяем, чтобы NaN в датасете не было больше 10% в каждом столбце'''
 
     for col in df.columns:
-    	assert df[col].isna().sum() / df.shape[0] < 0.1 
+        assert df[col].isna().sum() / df.shape[0] < 0.1
 
 
 def test_model_acc():

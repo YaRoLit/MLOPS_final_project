@@ -26,16 +26,16 @@ def load_data(filename: str) -> pd.DataFrame:
     if ext in ['xlsx', 'xls']:
         try:
             df = pd.read_excel(filename)
-        
-        except:
+
+        except Exception:
             print('Ваша таблица корявая')
             return None
 
     elif ext in ['csv', 'txt']:
         try:
             df = pd.read_csv(filename, sep='\t', encoding='utf-16')
-        
-        except:
+
+        except Exception:
             print('Ваш csv битый')
             return None
 
@@ -57,7 +57,7 @@ def get_model_features(df: pd.DataFrame) -> pd.DataFrame:
         with open('model.mtd', 'r', encoding='utf-16') as file_:
             columns = file_.readlines()[0]
 
-    except:
+    except Exception:
         print('Не могу открыть файл метаданных текущей модели')
         return None
 
@@ -69,13 +69,13 @@ def get_model_features(df: pd.DataFrame) -> pd.DataFrame:
 def fill_nans(df: pd.DataFrame) -> pd.DataFrame:
     '''Заполняем пропуски в датасете'''
     cat_col, num_col = cat_num_split(df)
-    
+
     imp_num = SimpleImputer(missing_values=pd.NA, strategy='median')
     imp_cat = SimpleImputer(missing_values=pd.NA, strategy='most_frequent')
-    
+
     df[num_col] = imp_num.fit_transform(df[num_col])
     df[cat_col] = imp_cat.fit_transform(df[cat_col])
-    
+
     return df
 
 
@@ -90,7 +90,7 @@ def get_predict_model_features(df: pd.DataFrame) -> pd.DataFrame:
         with open('model.mtd', 'r', encoding='utf-16') as file_:
             columns = file_.readlines()[0]
 
-    except:
+    except Exception:
         print('Не могу открыть файл метаданных текущей модели')
         return None
 
@@ -111,12 +111,12 @@ def create_adress_feature(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def save_data(df: pd.DataFrame,
-              filename: str='./Datasets/train.csv') -> None:
+              filename: str = './Datasets/train.csv') -> None:
     '''Записываем подготовленную тренировочную выборку на диск'''
 
     try:
         df.to_csv(filename, index=False, sep='\t')
         print('Датасет сохранён успешно')
 
-    except:
+    except Exception:
         print('Не могу записать датасет на диск')

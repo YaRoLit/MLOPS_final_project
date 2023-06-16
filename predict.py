@@ -2,7 +2,6 @@ import pickle
 
 import pandas as pd
 
-from catboost import CatBoostRegressor
 from catboost import Pool
 
 import preproc as prc
@@ -15,12 +14,12 @@ with open('model.pkl', 'rb') as file_:
 
 def predict(df: pd.DataFrame) -> float:
     '''Определяем цену c помощью модели'''
-    
-    df = fill_nans(df)
+
+    df = prc.fill_nans(df)
 
     pred_data = Pool(data=df,
-                cat_features=cat_num_split(df)[0],
-                feature_names=list(df.columns))
+                     cat_features=cat_num_split(df)[0],
+                     feature_names=list(df.columns))
 
     return model.predict(pred_data)
 
@@ -28,7 +27,7 @@ def predict(df: pd.DataFrame) -> float:
 def predict_test_file() -> None:
     '''
     Берем файл test.csv из папки с /Datasets
-    и добавляем ему колонку с ценой кв.м. 
+    и добавляем ему колонку с ценой кв.м.
     '''
 
     df = prc.load_data('./Datasets/test.csv')
@@ -36,8 +35,8 @@ def predict_test_file() -> None:
     df = prc.get_predict_model_features(df)
 
     df = prc.create_adress_feature(df)
-    
-    df = fill_nans(df)
+
+    df = prc.fill_nans(df)
 
     pred = df.drop(['Столбец1', 'дом'], axis=1)
 
@@ -45,12 +44,12 @@ def predict_test_file() -> None:
 
     pred.insert(0, 'предполагаемая цена кв.м.', y_pred)
 
-    pred.to_csv('./Datasets/pred.csv', sep='\t', encoding='utf-16')    
-    
+    pred.to_csv('./Datasets/pred.csv', sep='\t', encoding='utf-16')
+
 
 if __name__ == "__main__":
-   try:
-       predict_test_file()
+    try:
+        predict_test_file()
 
-   except:
-       print('В папке /Datasets нет файла test.csv или он косячный')
+    except Exception:
+        print('В папке /Datasets нет файла test.csv или он косячный')
