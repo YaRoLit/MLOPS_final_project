@@ -13,6 +13,8 @@ df = prc.load_data('./Datasets/train.csv')
 
 df = prc.get_model_features(df)
 
+df = fill_nans(df)
+
 df = prc.create_adress_feature(df)
 
 train = df.drop(['Столбец1', 'дом'], axis=1)

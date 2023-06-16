@@ -64,6 +64,19 @@ def get_model_features(df: pd.DataFrame) -> pd.DataFrame:
     return df[columns]
 
 
+def fill_nans(df: pd.DataFrame) -> pd.DataFrame:
+    '''Заполняем пропуски в датасете'''
+    cat_col, num_col = cat_num_split(df)
+    
+    imp_num = SimpleImputer(strategy='median')
+    imp_cat = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
+    
+    df[num_col] = imp_num.fit_transform(df[num_col])
+    df[cat_col] = imp_cat.fit_transform(df[cat_col])
+    
+    return df
+
+
 def get_predict_model_features(df: pd.DataFrame) -> pd.DataFrame:
     '''
     Забираем из датафрейма только те фичи, которые нужны модели

@@ -15,6 +15,8 @@ with open('model.pkl', 'rb') as file_:
 
 def predict(df: pd.DataFrame) -> float:
     '''Определяем цену c помощью модели'''
+    
+    df = fill_nans(df)
 
     pred_data = Pool(data=df,
                 cat_features=cat_num_split(df)[0],
@@ -34,6 +36,8 @@ def predict_test_file() -> None:
     df = prc.get_predict_model_features(df)
 
     df = prc.create_adress_feature(df)
+    
+    df = fill_nans(df)
 
     pred = df.drop(['Столбец1', 'дом'], axis=1)
 
