@@ -1,2 +1,2 @@
-['remote "mlops"']
-    url = gdrive://1U7NrynxNWp2LqGAX4hUkXXNg61NP0Van?usp=sharing
+['remote "gd"']
+    url = ../1U7NrynxNWp2LqGAX4hUkXXNg61NP0Van?usp=sharing
