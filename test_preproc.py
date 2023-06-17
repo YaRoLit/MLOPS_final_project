@@ -31,11 +31,11 @@ def test_cat_num_split():
 def test_load_data():
     '''Тестируем функцию загрузки датафреймов'''
 
-    df_test.to_csv('./Datasets/tst.csv', sep='\t', encoding='utf-16', index=False)
+    df_test.to_csv('tst.csv', sep='\t', encoding='utf-16', index=False)
     
-    assert load_data('./Datasets/tst.csv').equals(df_test)
+    assert load_data('tst.csv').equals(df_test)
     
-    os.remove('./Datasets/tst.csv')
+    os.remove('tst.csv')
 
 
 def test_create_adress_feature():
