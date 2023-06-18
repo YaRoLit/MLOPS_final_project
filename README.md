@@ -19,4 +19,4 @@ __Соучастники:__
 - обеспечения процесса непрерывной интеграции Jenkins,    
 - фреймворк Streamlit.
 
-![men.jpg](https://github.com/YaRoLit/MLOPS_final_project/blob/SEV_tests/men.jpg)
+![men.jpg](https://github.com/YaRoLit/MLOPS_final_project/men.jpg)
