@@ -20,7 +20,7 @@
 - виртуализация Doscker,    
 - пользовательский интерфейс Streamlit.    
     
-<img src = 'https://github.com/YaRoLit/MLOPS_final_project/men.jpg ' alt = ' men ' align='center'/>    
+<img src = 'https://github.com/YaRoLit/MLOPS_final_project/tree/readme_new/men.jpg ' alt = ' men ' align='center'/>    
      
 ###  МОДЕЛЬ В ИСПОЛЬЗОВАНИИ    
 1)	Для запуска приложения перейдите по ссылке http://158.160.72.125:8501/    
