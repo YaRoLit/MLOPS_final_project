@@ -31,6 +31,6 @@
      
      
 ###  АВТОРЫ    
-Ярослав Литаврин ([YaRoLit](https://github.com/yarolit))    
-Людмила Михайличенко ([alduinsh]( https://github.com/alduinsh))    
-Екатерина Слободчикова ([EkaterinaSeveryanka]( https://github.com/EkaterinaSeveryanka))     
+- Ярослав Литаврин ([YaRoLit](https://github.com/yarolit))    
+- Людмила Михайличенко ([alduinsh]( https://github.com/alduinsh))    
+- Екатерина Слободчикова ([EkaterinaSeveryanka]( https://github.com/EkaterinaSeveryanka))     
