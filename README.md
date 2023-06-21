@@ -2,7 +2,7 @@
 ##  Содержание    
 
 [1. Описание приложения](https://github.com/YaRoLit/MLOPS_final_project/main/README.md#Описание-приложения)    
-[2. Модель в использовании](https://github.com/YaRoLit/MLOPS_final_project/main/README.md# Модель-в-использовании )    
+[2. Модель в использовании](https://github.com/YaRoLit/MLOPS_final_project/main/README.md#Модель-в-использовании )    
 [3. Авторы](https://github.com/YaRoLit/MLOPS_final_project/main/README.md#Авторы)    
     
     
