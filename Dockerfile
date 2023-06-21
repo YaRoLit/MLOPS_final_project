@@ -18,4 +18,4 @@ COPY . /apps
 
 WORKDIR /apps
 
-CMD ["streamlit", "run", "main.py"]
+CMD ["nohup", "streamlit", "run", "main.py"]
