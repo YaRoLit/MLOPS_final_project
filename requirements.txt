@@ -1,5 +1,6 @@
 pandas
 scikit-learn
+pytest
 catboost
 streamlit
 dvc==2.58.2
